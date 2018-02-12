@@ -75,7 +75,7 @@ module D3
       def alias_native_new(ruby_name, js_name=ruby_name)
         eval <<-EOF
           def #{ruby_name}(*args)
-            self.class.new @native.JS.#{js_name}(*args)
+            self.class.new( `self["native"].#{js_name}.apply(self["native"], Opal.to_a(args))` )
           end
         EOF
       end
