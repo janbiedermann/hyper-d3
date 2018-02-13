@@ -52,9 +52,13 @@ module D3
     alias_native_new :select_all, :selectAll
     alias_native_new :enter
     alias_native_new :exit
-    alias_native_new :call
     alias_native_chainable :raise
     alias_native_chainable :lower
+
+    def call(context)
+      @native.JS.call(context.to_n)
+      self
+    end
 
     def merge(other)
       D3::Selection.new @native.JS.merge(other.to_n)
