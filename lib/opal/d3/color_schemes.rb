@@ -17,8 +17,12 @@ module D3
        RdBu RdPu RdGy RdYlBu RdYlGn YlGn YlGnBu YlOrBr YlOrRd
        Spectral].each do |native_category|
       eval <<-EOF
-        def interpolate_#{native_category.underscore}(k)
-          `window.d3.interpolate#{native_category}(k)`
+        def interpolate_#{native_category.underscore}(k = nil)
+          if k
+            `window.d3.interpolate#{native_category}(k)`
+          else
+            `window.d3.interpolateRainbow`
+          end
         end
         def scheme_#{native_category.underscore}(k)
           `window.d3.scheme#{native_category}[k]`
@@ -27,11 +31,15 @@ module D3
     end
 
     %w[Cool CubehelixDefault Inferno Magma Plasma Rainbow Viridis Warm].each do |native_category|
-       eval <<-EOF
-         def interpolate_#{native_category.underscore}(k)
-           `window.d3.interpolate#{native_category}(k)`
-         end
-       EOF
-     end
+      eval <<-EOF
+        def interpolate_#{native_category.underscore}(k)
+          if k
+            `window.d3.interpolate#{native_category}(k)`
+          else
+            `window.d3.interpolateRainbow`
+          end
+        end
+      EOF
+    end
   end
 end

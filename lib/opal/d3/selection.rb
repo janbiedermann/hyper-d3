@@ -1,10 +1,17 @@
 module D3
   class Selection
     include D3::Native
-    alias_native_new :size
+    aliases_native %i[size]
     alias_native_new :empty?, :empty
     alias_native_new :node
     alias_native_new :nodes
+    alias_native_new :remove
+    alias_native_new :select
+    alias_native_new :select_all, :selectAll
+    alias_native_new :enter
+    alias_native_new :exit
+    alias_native_chainable :raise
+    alias_native_chainable :lower
 
     def inspect
       `#@native.toString()`
@@ -45,14 +52,6 @@ module D3
         D3::Selection.new @native.JS.insert(name.to_n, before.to_n)
       end
     end
-
-    alias_native_new :remove
-    alias_native_new :select
-    alias_native_new :select_all, :selectAll
-    alias_native_new :enter
-    alias_native_new :exit
-    alias_native_chainable :raise
-    alias_native_chainable :lower
 
     def call(context)
       @native.JS.call(context.to_n)

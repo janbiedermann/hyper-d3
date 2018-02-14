@@ -1,13 +1,10 @@
 module D3
   class Set
     include D3::Native
-    alias_native_new :empty?, :empty
-    alias_native_new :has?, :has
-    alias_native_new :size
-    alias_native_new :values
-    alias_native_chainable :add
-    alias_native_chainable :clear
-    alias_native_chainable :remove
+    alias_native :empty?, :empty
+    alias_native :has?, :has
+    aliases_native %i[size values]
+    aliases_native_chainable %i[add clear remove]
 
     def each(&block)
       @native.JS.each(block)
