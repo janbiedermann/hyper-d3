@@ -87,6 +87,12 @@ module D3
         EOF
       end
 
+      def aliases_native_chainable(native_names)
+        native_names.each do |native_name|
+          alias_native_chainable(native_name.underscore, native_name)
+        end
+      end
+      
       def alias_native_chainable(ruby_name, js_name=ruby_name)
         eval <<-EOF
           def #{ruby_name}(*args)
