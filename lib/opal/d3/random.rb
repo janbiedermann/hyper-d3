@@ -1,12 +1,14 @@
 module D3
   class << self
-    # These return functions,
-    # which doesn't feel very Ruby
-    alias_d3 :random_uniform, :randomUniform
-    alias_d3 :random_normal, :randomNormal
-    alias_d3 :random_log_normal, :randomLogNormal
-    alias_d3 :random_bates, :randomBates
-    alias_d3 :random_irwin_hall, :randomIrwinHall
-    alias_d3 :random_exponential, :randomExponential
+    # These return functions in d3,
+    # which doesn't feel very Ruby, so we call the functions
+    aliases_d3 %i[
+      randomUniform
+      randomNormal
+      randomLogNormal
+      randomBates
+      randomIrwinHall
+      randomExponential
+    ]
   end
 end

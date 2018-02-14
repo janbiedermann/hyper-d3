@@ -6,10 +6,8 @@ module D3
       @native.call(t)
     end
 
-    attribute_d3 :domain
-    attribute_d3 :range
-    alias_native_new :invert_extent, :invertExtent
-    alias_native_new :quantiles
+    attributes_d3 %i[domain range]
+    aliases_native %i[invertExtent quantiles]
     alias_native_new :copy
   end
 

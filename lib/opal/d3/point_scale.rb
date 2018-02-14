@@ -6,16 +6,17 @@ module D3
       v = @native.call(t)
       `v === undefined ? nil : v`
     end
-    attribute_d3 :domain
-    attribute_d3 :range
+    attributes_d3 %i[
+      domain
+      range
+      rangeRound
+      padding
+      align
+      round
+    ]
     alias_native_new :copy
-    alias_native_new :bandwidth
-    alias_native_new :step
-    attribute_d3 :padding
-    attribute_d3 :align
-    attribute_d3 :round
-    # This requires argument, we might redo this not to
-    alias_native_chainable :range_round, :rangeRound
+    alias_native :bandwidth
+    alias_native :step
   end
 
   class << self

@@ -7,9 +7,7 @@ module D3
       `result === null ? nil : result`
     end
 
-    attribute_d3_block :angle
-    attribute_d3_block :radius
-    attribute_d3_block :defined
+    attributes_d3_block %i[angle radius defined]
 
     def curve(new_value=`undefined`)
       if `new_value === undefined`

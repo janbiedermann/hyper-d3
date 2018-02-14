@@ -36,14 +36,8 @@ module D3
 
   class QuadTree
     include D3::Native
-    alias_native_new :data
-    alias_native_new :find
-    alias_native_new :size
-    alias_native_chainable :add
-    alias_native_chainable :add_all, :addAll
-    alias_native_chainable :cover
-    alias_native_chainable :remove
-    alias_native_chainable :remove_all, :removeAll
+    aliases_native %i[data find size]
+    aliases_native_chainable %i[add addAll cover remove removeAll]
     alias_native_new :copy
     attribute_d3 :extent
 

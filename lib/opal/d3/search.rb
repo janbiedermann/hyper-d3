@@ -7,11 +7,13 @@ module D3
   end
 
   class << self
-    alias_d3 :ascending
-    alias_d3 :descending
-    alias_d3 :bisect
-    alias_d3 :bisect_left, :bisectLeft
-    alias_d3 :bisect_right, :bisectRight
+    aliases_d3 %i[
+      ascending
+      descending
+      bisect
+      bisectLeft
+      bisectRight
+    ]
 
     def scan(array, &block)
       if block_given?
