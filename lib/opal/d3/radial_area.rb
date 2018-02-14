@@ -7,13 +7,15 @@ module D3
       `result === null ? nil : result`
     end
 
-    attribute_d3_block :angle
-    attribute_d3_block :start_angle, :startAngle
-    attribute_d3_block :end_angle, :endAngle
-    attribute_d3_block :radius
-    attribute_d3_block :inner_radius, :innerRadius
-    attribute_d3_block :outer_radius, :outerRadius
-    attribute_d3_block :defined
+    attributes_d3_block %i[
+      angle
+      startAngle
+      endAngle
+      radius
+      innerRadius
+      outerRadius
+      defined
+    ]
 
     def curve(new_value=`undefined`)
       if `new_value === undefined`
@@ -42,8 +44,12 @@ module D3
   end
 
   class << self
-    def radial_area
-      D3::RadialAreaGenerator.new @d3.JS.radialArea
+    def radial_area(data = nil)
+      if data
+        D3::RadialAreaGenerator.new @d3.JS.radialArea(data.to_n)
+      else
+        D3::RadialAreaGenerator.new @d3.JS.radialArea
+      end
     end
   end
 end

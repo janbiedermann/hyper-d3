@@ -10,8 +10,7 @@ module D3
       `#@native.toString()`
     end
 
-    attribute_d3_block :text
-    attribute_d3_block :html
+    attributes_d3_block %i[text html]
 
     def data(data=nil,key=nil,&block)
       if block

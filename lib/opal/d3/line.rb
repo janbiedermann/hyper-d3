@@ -7,9 +7,7 @@ module D3
       `result === null ? nil : result`
     end
 
-    attribute_d3_block :x
-    attribute_d3_block :y
-    attribute_d3_block :defined
+    attributes_d3_block %i[x y defined]
 
     def curve(new_value=`undefined`)
       if `new_value === undefined`

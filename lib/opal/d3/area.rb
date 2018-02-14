@@ -7,13 +7,9 @@ module D3
       `result === null ? nil : result`
     end
 
-    attribute_d3_block :x
-    attribute_d3_block :x0
-    attribute_d3_block :x1
-    attribute_d3_block :y
-    attribute_d3_block :y0
-    attribute_d3_block :y1
-    attribute_d3_block :defined
+    attributes_d3_block %i[
+      x x0 x1 y y0 y1 defined
+    ]
 
     def curve(new_value=`undefined`)
       if `new_value === undefined`
@@ -22,6 +18,10 @@ module D3
         @native.JS.curve(new_value.to_n)
         self
       end
+    end
+
+    def area_radial(data = nil)
+      D3::RadialAreaGenerator.radial_area(data)
     end
 
     def line_x0
@@ -42,8 +42,12 @@ module D3
   end
 
   class << self
-    def area
-      D3::AreaGenerator.new @d3.JS.area
+    def area(data = nil)
+      if data
+        D3::AreaGenerator.new @d3.JS.area(data.to_n)
+      else
+        D3::AreaGenerator.new @d3.JS.area
+      end
     end
   end
 end

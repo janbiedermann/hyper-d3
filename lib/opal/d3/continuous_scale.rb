@@ -5,15 +5,11 @@ module D3
       @native.call(t)
     end
 
-    alias_native_new :invert
-    attribute_d3 :domain
-    attribute_d3 :range
-    attribute_d3 :clamp
+    aliases_native %i[invert ticks tickFormat]
+    attributes_d3 %i[domain range rangeRound clamp]
     alias_native_chainable :nice
     alias_native_new :copy
-    alias_native_new :ticks
-    alias_native_new :tick_format, :tickFormat
-    alias_native_chainable :range_round, :rangeRound
+
     def interpolate(&block)
       if block
         @native.JS.interpolate(block)

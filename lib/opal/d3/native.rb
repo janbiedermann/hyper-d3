@@ -1,5 +1,15 @@
 require "native"
 
+module Native
+  module Helpers
+    def aliases_native(native_names)
+      native_names.each do |native_name|
+        alias_native(native_name.underscore, native_name)
+      end
+    end
+  end
+end
+
 module D3
   module Native
     include ::Native
@@ -9,14 +19,22 @@ module D3
     end
 
     def self.included(klass)
+      klass.extend ::Native::Helpers
       klass.extend Helpers
     end
 
     module Helpers
-      # This provides ruby style and jquery style interfaces:
+      # This provides ruby style interfaces:
       # obj.foo
       # obj.foo = 1; obj.bar = 2
       # obj.foo(1).bar(2)
+
+      def attributes_d3(native_names)
+        native_names.each do |native_name|
+          attribute_d3(native_name.underscore, native_name)
+        end
+      end
+
       def attribute_d3(ruby_name, js_name=ruby_name)
         eval <<-EOF
           def #{ruby_name}(new_value=`undefined`)
@@ -36,6 +54,12 @@ module D3
         EOF
       end
 
+      def attributes_d3_block(native_names)
+        native_names.each do |native_name|
+          attribute_d3_block(native_name.underscore, native_name)
+        end
+      end
+      
       # This provides ruby style and jquery style interfaces,
       # and also block interface:
       # obj.foo
@@ -66,10 +90,16 @@ module D3
       def alias_native_chainable(ruby_name, js_name=ruby_name)
         eval <<-EOF
           def #{ruby_name}(*args)
-            @native.JS.#{js_name}(*args)
+            `self["native"].#{js_name}.apply(self["native"], Opal.to_a(args))`
             self
           end
         EOF
+      end
+
+      def aliases_native_new(native_names)
+        native_names.each do |native_name|
+          alias_native_new(native_name.downcase, native_name)
+        end
       end
 
       def alias_native_new(ruby_name, js_name=ruby_name)

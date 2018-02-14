@@ -6,6 +6,8 @@ module D3
       @native.call(data)
     end
 
+    attributes_d3 %i[value domain]
+
     def thresholds(count=nil, &block)
       if block_given?
         @native.JS.thresholds(block)

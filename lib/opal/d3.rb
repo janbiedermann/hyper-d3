@@ -2,10 +2,16 @@ require "opal"
 require "opal-parser"
 
 class Module
+  def aliases_d3(native_names)
+    native_names.each do |native_name|
+      alias_d3(native_name.downcase, native_name)
+    end
+  end
+  
   def alias_d3(ruby_name, js_name=ruby_name)
     eval <<-EOF
       def #{ruby_name}(*args)
-        @d3.JS.#{js_name}(*args)
+        `self["d3"].#{js_name}.apply(self["d3"], Opal.to_a(args))`
       end
     EOF
   end

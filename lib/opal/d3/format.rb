@@ -48,9 +48,7 @@ module D3
 
 
   class << self
-    alias_d3 :precision_fixed, :precisionFixed
-    alias_d3 :precision_prefix, :precisionPrefix
-    alias_d3 :precision_round, :precisionRound
+    aliases_d3 %i[precisionFixed precisionPrefix precisionRound]
 
     def format(specifier)
       if specifier.is_a?(FormatSpecifier)

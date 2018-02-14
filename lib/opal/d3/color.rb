@@ -2,12 +2,10 @@ module D3
   class Color
     include D3::Native
     attr_reader :native
-    alias_native_new :to_s, :toString
-    alias_native_new :brighter
-    alias_native_new :darker
-    alias_native_new :displayable?, :displayable
-    alias_native_new :rgb
-
+    aliases_native_new %i[brighter darker]
+    alias_native :displayable?, :displayable
+    alias_native :to_s, :toString
+    
     # Various subsets of these are valid depending on color - maybe we should properly subclass?
     def a; `#@native.a` end
     def b; `#@native.b` end
