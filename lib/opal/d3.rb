@@ -9,11 +9,9 @@ class Module
   end
   
   def alias_d3(ruby_name, js_name=ruby_name)
-    eval <<-EOF
-      def #{ruby_name}(*args)
-        `self["d3"].#{js_name}.apply(self["d3"], Opal.to_a(args))`
-      end
-    EOF
+    define_method(ruby_name) do |*args|
+      @d3.JS[js_name].JS.apply(@d3, `Opal.to_a(args)`)
+    end
   end
 end
 
