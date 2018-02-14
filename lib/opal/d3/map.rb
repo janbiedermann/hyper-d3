@@ -7,14 +7,10 @@ module D3
       `result === undefined ? nil : result`
     end
     include Native
-    alias_native_chainable :set
-    alias_native_chainable :remove
-    alias_native_chainable :clear
-    alias_native_new :keys
-    alias_native_new :values
-    alias_native_new :size
-    alias_native_new :empty?, :empty
-    alias_native_new :has?, :has
+    aliases_native_chainable %i[set remove clear]
+    aliases_native %i[get keys values size]
+    alias_native :empty?, :empty
+    alias_native :has?, :has
     alias_method :[], :get
     alias_method :[]=, :set
 

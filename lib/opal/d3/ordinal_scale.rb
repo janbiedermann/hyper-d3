@@ -5,8 +5,7 @@ module D3
     def call(t)
       @native.call(t)
     end
-    attribute_d3 :domain
-    attribute_d3 :range
+    attributes_d3 %i[domain range]
     alias_native_new :copy
 
     # D3 is trying to reinvent Ruby symbols here
@@ -35,22 +34,6 @@ module D3
 
     def scale_implicit
       :implicit
-    end
-
-    def scheme_category_10
-      `window.d3.schemeCategory10`
-    end
-
-    def scheme_category_20
-      `window.d3.schemeCategory20`
-    end
-
-    def scheme_category_20b
-      `window.d3.schemeCategory20b`
-    end
-
-    def scheme_category_20c
-      `window.d3.schemeCategory20c`
     end
   end
 end
