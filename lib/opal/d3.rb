@@ -1,5 +1,4 @@
 require "opal"
-require "opal-parser"
 
 class Module
   def aliases_d3(native_names)
