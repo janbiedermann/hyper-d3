@@ -1,19 +1,18 @@
 module D3
   class TimeFormatLocale
     include D3::Native
-    alias_native_new :format, :format
-    alias_native_new :parse, :parse
-    alias_native_new :utc_format, :utcFormat
-    alias_native_new :utc_parse, :utcParse
+    aliases_native %i[format utcFormat parse utcParse]
   end
 
   class << self
-    alias_d3 :time_format, :timeFormat
-    alias_d3 :time_parse, :timeParse
-    alias_d3 :utc_format, :utcFormat
-    alias_d3 :utc_parse, :utcParse
-    alias_d3 :iso_format, :isoFormat
-    alias_d3 :iso_parse, :isoParse
+    aliases_d3 %i[
+      timeFormat
+      timeParse
+      utcFormat
+      utcParse
+      isoFormat
+      isoParse
+    ]
 
     def time_format_locale(spec={})
       D3::TimeFormatLocale.new @d3.JS.timeFormatLocale(

@@ -1,8 +1,7 @@
 module D3
   class ThresholdScale
     include D3::Native
-    attribute_d3 :domain
-    attribute_d3 :range
+    attributes_d3 %i[domain range]
     alias_native_new :copy
 
     def call(t)
