@@ -4,7 +4,7 @@ require "opal-parser"
 class Module
   def aliases_d3(native_names)
     native_names.each do |native_name|
-      alias_d3(native_name.downcase, native_name)
+      alias_d3(native_name.underscore, native_name)
     end
   end
   
