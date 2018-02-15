@@ -19,8 +19,6 @@
         open("#{__dir__}/../app/#{script}.rb").read
       %></code></pre>
     </div>
-    <script src="../assets/d3.js"></script>
-    <script src="../assets/d3-scale-chromatic.js"></script>
     <script src="../assets/<%= script %>.js"></script>
     <script>
       window.onload = function() { Opal.load("<%= script %>"); }
