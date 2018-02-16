@@ -1,5 +1,11 @@
 require "opal"
 
+require_relative "d3/source/d3.js"
+require_relative "d3/source/drag.js"
+require_relative "d3/source/d3-scale-chromatic.js"
+
+require 'active_support/core_ext/string'
+
 class Module
   def aliases_d3(native_names)
     native_names.each do |native_name|
@@ -64,3 +70,6 @@ require_relative "d3/threshold_scale"
 require_relative "d3/time_format"
 require_relative "d3/time_interval"
 require_relative "d3/transformations"
+
+require "hyper-component"
+require "hyperloop/d3/mixin"
