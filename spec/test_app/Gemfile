@@ -1,7 +1,0 @@
-source 'https://rubygems.org'
-
-gem "rails"
-gem "listen"
-gem 'sqlite3'
-gem "opal-jquery", git: "https://github.com/opal/opal-jquery.git", branch: "master"
-gem "hyper-d3", path: "../.."
