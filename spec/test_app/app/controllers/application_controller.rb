@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   @@visualizations = {
+    event_elections_2016: "Elections 2016 with Event Handler",
     elections_2016: "Elections 2016",
     london_population: "London Population",
     london_population_area: "London Population - Area Chart",
