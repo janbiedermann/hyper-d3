@@ -12,6 +12,10 @@ module Hyperloop
             @_dom_node = dom_node
           end
 
+          def data
+            @_data
+          end
+          
           def selection
             if @_dom_node
               selection = ::D3.select(@_dom_node)
