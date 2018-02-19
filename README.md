@@ -45,7 +45,7 @@ class StarTrekVoyagerComponent < Hyperloop::D3::Component
 
   # You would mount or render that Component with the data as paramter, like:
   # StarTrekVoyagerComponent(data: VoyagerData)
-  
+
   render_with_selection('DIV') do |selection, voyager_data|
     svg = selection.append("svg")
             .attr("height", "600px")
@@ -96,7 +96,7 @@ class OuterComponent
 end
 ```
 When state.data changes, the StarTrekVoaygerComponent will receive that as new param and render with the new data.
-*'Its important to note** though, that react doesnt do the diff for native js dom manipulations, that means, if the
+**Its important to note** though, that react doesnt do the diff for native js dom manipulations, that means, if the
 component receives new data, it must do the DOM housekeeping itself, remove dom nodes or add or replace them.
 
 ### Events
