@@ -97,7 +97,8 @@ end
 ```
 When state.data changes, the StarTrekVoaygerComponent will receive that as new param and render with the new data.
 **Its important to note** though, that react doesnt do the diff for native js dom manipulations, that means, if the
-component receives new data, it must do the DOM housekeeping itself, remove dom nodes or add or replace them.
+component receives new data, it must do the DOM housekeeping itself, remove dom nodes or add or replace them within
+the block passed to render_with_selection.
 
 ### Events
 Events in the D3 classes are currentyly badly supported. You must most probably revert to native JS inlining.
