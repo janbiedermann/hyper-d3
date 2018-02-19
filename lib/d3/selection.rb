@@ -2,7 +2,7 @@ module D3
   class Selection
     include D3::Native
     aliases_native %i[size]
-    alias_native_new :empty?, :empty
+    alias_native :empty?, :empty
     alias_native_new :node
     alias_native_new :nodes
     alias_native_new :remove
