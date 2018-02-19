@@ -45,10 +45,12 @@ module Hyperloop
           end
 
           before_receive_props do |new_props|
-            @_data = new_props[:data] if new_props[:data]
-            if @_dom_node && @_d3_render_block
-              selection = ::D3.select(@_dom_node)
-              @_d3_render_block.call(selection, @_data)
+            if new_props[:data] != @_data
+              @_data = new_props[:data] 
+              if @_dom_node && @_d3_render_block
+                selection = ::D3.select(@_dom_node)
+                @_d3_render_block.call(selection, @_data)
+              end
             end
           end
         end
