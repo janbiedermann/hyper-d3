@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.author       = "Jan Biedermann, Tomasz Wegrzanowski"
   s.email        = "jan@kursator.de"
   s.homepage     = "https://github.com/janbiedermann/hyper-d3"
-  s.summary      = "Ruby bindings for D3 as a Ruby Haperloop Component"
+  s.summary      = "Ruby bindings for D3 as a Ruby Hyperloop Component"
   s.description  = "Write React Components in ruby to show graphics created with D3.js"
 
   s.files          = `git ls-files`.split("\n")
