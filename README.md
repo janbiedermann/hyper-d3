@@ -102,6 +102,7 @@ the block passed to render_with_selection.
 
 ### Events
 Events in the D3 classes are currentyly badly supported. You must most probably revert to native JS inlining.
+You can refer to the selection, <div> in the example below, by calling the accessor `selection`from within the even handler.
 To clean up the event handlers, you can use the before_unmount_with_selection callback. It will be called with the root
 selection and the most recent data received:
 ```ruby
@@ -111,6 +112,10 @@ class StarTrekVoyagerComponent < Hyperloop::D3::Component
     # clean up event handlers or anything else here
   end
 
+  def handler_for_event
+    selection # accessor for the <div> selection below
+  end
+  
   render_with_selection('DIV') do |selection, voyager_data|
     # draw here
   end
