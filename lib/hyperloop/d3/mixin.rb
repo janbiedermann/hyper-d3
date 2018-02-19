@@ -12,10 +12,17 @@ module Hyperloop
             @_dom_node = dom_node
           end
 
+          def selection
+            if @_dom_node
+              selection = ::D3.select(@_dom_node)
+            else
+              raise "No DOM Node available for D3::Selection"
+            end
+          end
+
           def self.before_unmount_with_selection(&block)
             before_unmount do
               if @_dom_node && block
-                selection = ::D3.select(@_dom_node)
                 block.call(selection, @_data)
               end
             end
@@ -39,7 +46,6 @@ module Hyperloop
 
           after_mount do
             if @_dom_node && @_d3_render_block
-              selection = ::D3.select(@_dom_node)
               @_d3_render_block.call(selection, @_data)
             end
           end
@@ -48,7 +54,6 @@ module Hyperloop
             if new_props[:data] != @_data
               @_data = new_props[:data] 
               if @_dom_node && @_d3_render_block
-                selection = ::D3.select(@_dom_node)
                 @_d3_render_block.call(selection, @_data)
               end
             end
