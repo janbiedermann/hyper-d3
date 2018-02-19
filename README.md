@@ -45,6 +45,7 @@ class StarTrekVoyagerComponent < Hyperloop::D3::Component
 
   # You would mount or render that Component with the data as paramter, like:
   # StarTrekVoyagerComponent(data: VoyagerData)
+  
   render_with_selection('DIV') do |selection, voyager_data|
     svg = selection.append("svg")
             .attr("height", "600px")
