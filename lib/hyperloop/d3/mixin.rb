@@ -20,6 +20,12 @@ module Hyperloop
             end
           end
 
+          def redraw
+            if @_dom_node && @_d3_render_block
+              @_d3_render_block.call(selection, @_data)
+            end
+          end
+
           def self.before_unmount_with_selection(&block)
             before_unmount do
               if @_dom_node && block
@@ -45,17 +51,13 @@ module Hyperloop
           end
 
           after_mount do
-            if @_dom_node && @_d3_render_block
-              @_d3_render_block.call(selection, @_data)
-            end
+            redraw
           end
 
           before_receive_props do |new_props|
             if new_props[:data] != @_data
               @_data = new_props[:data] 
-              if @_dom_node && @_d3_render_block
-                @_d3_render_block.call(selection, @_data)
-              end
+              redraw
             end
           end
         end
