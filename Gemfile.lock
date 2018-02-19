@@ -10,14 +10,13 @@ PATH
   remote: .
   specs:
     opal-d3 (0.0.20170822)
-      hyper-component (= 1.0.0.lap21)
-      hyperloop-config (= 1.0.0.lap21)
+      hyper-component (~> 1.0.0.lap23)
+      hyperloop-config (~> 1.0.0.lap23)
       opal (~> 0.11.0)
       opal-activesupport (~> 0.3.1)
 
 GEM
   remote: https://rubygems.org/
-  remote: http://gemserver:8282/
   specs:
     abstract_type (0.0.7)
     actioncable (5.1.5)
@@ -98,17 +97,35 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hike (1.2.3)
-    hyper-component (1.0.0.lap21)
+    hyper-component (1.0.0.lap23)
       actionview (>= 4.0.0)
-      hyper-react (= 1.0.0.lap21)
-      hyperloop-config (= 1.0.0.lap21)
-      opal-rails (~> 0.9.3)
+      hyper-react (= 1.0.0.lap23)
+      hyperloop-config (= 1.0.0.lap23)
+      opal-rails (~> 0.9.4)
       react-rails (>= 2.4.0, < 2.5.0)
-    hyper-react (1.0.0.lap21)
-      hyper-store (= 1.0.0.lap21)
+    hyper-mesh (1.0.0.lap23)
+      activerecord (>= 4.0.0)
+      hyper-component (= 1.0.0.lap23)
+      hyper-operation (= 1.0.0.lap23)
+    hyper-model (1.0.0.lap23)
+      hyper-mesh (= 1.0.0.lap23)
+    hyper-operation (1.0.0.lap23)
+      activerecord (>= 4.0.0)
+      hyper-component (= 1.0.0.lap23)
+      hyperloop-config (= 1.0.0.lap23)
+      mutations
+      opal-activesupport (~> 0.3.1)
+    hyper-react (1.0.0.lap23)
+      hyper-store (= 1.0.0.lap23)
       opal (>= 0.11.0, < 0.12.0)
       opal-activesupport (~> 0.3.1)
-    hyper-spec (1.0.0.lap21)
+    hyper-router (4.2.6.lap23)
+      hyper-component (= 1.0.0.lap23)
+      hyper-react (= 1.0.0.lap23)
+      opal-browser (~> 0.2.0)
+      opal-rails (~> 0.9.4)
+      react-rails (>= 2.4.0, < 2.5.0)
+    hyper-spec (1.0.0.lap23)
       capybara
       chromedriver-helper
       method_source
@@ -121,10 +138,19 @@ GEM
       uglifier
       unparser
       webdrivers
-    hyper-store (1.0.0.lap21)
-      hyperloop-config (= 1.0.0.lap21)
+    hyper-store (1.0.0.lap23)
+      hyperloop-config (= 1.0.0.lap23)
       opal (>= 0.11.0, < 0.12.0)
-    hyperloop-config (1.0.0.lap21)
+    hyperloop (1.0.0.lap23)
+      hyper-model (= 1.0.0.lap23)
+      hyper-router (= 4.2.6.lap23)
+      hyperloop-config (= 1.0.0.lap23)
+      mini_racer (~> 0.1.15)
+      opal-browser (~> 0.2.0)
+      opal-rails (~> 0.9.4)
+      rails (>= 4.0.0)
+      react-rails (>= 2.4.0, < 2.5.0)
+    hyperloop-config (1.0.0.lap23)
       opal (>= 0.11.0, < 0.12.0)
       opal-browser (~> 0.2.0)
       uglifier
@@ -136,6 +162,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    libv8 (6.3.292.48.1)
     loofah (2.2.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -146,7 +173,11 @@ GEM
     method_source (0.9.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
+    mini_racer (0.1.15)
+      libv8 (~> 6.3)
     minitest (5.11.3)
+    mutations (0.8.1)
+      activesupport
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -207,7 +238,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.3.0)
-    react-rails (2.4.3)
+    react-rails (2.4.4)
       babel-transpiler (>= 0.7.0)
       connection_pool
       execjs
@@ -272,7 +303,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  hyper-spec (= 1.0.0.lap21)
+  hyper-spec (~> 1.0.0.lap23)
+  hyperloop (~> 1.0.0.lap23)
   opal-d3!
   opal-jquery!
   rake (>= 11.3.0)
