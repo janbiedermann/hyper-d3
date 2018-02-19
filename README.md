@@ -35,11 +35,12 @@ class StarTrekVoyagerComponent < Hyperloop::D3::Component
   # include Hyperloop::D3::Mixin
 
   # Thy Hyperloop::D3::Component provides a convenience render method 'render_with_selection'
-  # and with that takes care of all the things that need to be done for react, to use D3.js
-  # This method provides to arguments, a D3::Selection, and the data that has been passed in as param
-  # for the component.
-  # By default, render_with_selection will provide a empty <svg> as selection, here the 'DIV' is passed
-  # as argument to render_with_selection, the selection argument passed to the block therefore is a <div>
+  # and with that, takes care of all the things that need to be done for react, to use D3.js
+  # This method provides two arguments to the block, a D3::Selection, and the data that has 
+  # been passed in as param for the component.
+  # By default, render_with_selection will provide a empty <svg> as selection,
+  # here the 'DIV' is passed as argument to render_with_selection, the selection argument
+  # passed to the block therefore is a <div>
   # Within the block, just use the selection as you usually would with D3.
 
   # You would mount or render that Component with the data as paramter, like:
